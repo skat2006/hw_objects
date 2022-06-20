@@ -19,5 +19,20 @@ public class Author {
         return this.firstName + " " + this.lastName;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        try {
+            Author inObj = (Author) obj;
+            return firstName.equals(inObj.getFirstName()) && lastName.equals(inObj.getLastName());
+        } catch (ClassCastException e) {
+            System.out.println("Классы не совпадают");
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return firstName.hashCode() - lastName.hashCode();
+    }
 
 }

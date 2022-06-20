@@ -27,16 +27,22 @@ public class Book {
 
     @Override
     public String toString() {
-        return author + " пишет в книге " + title + " о том, как слушала рассказы дворовых бабок по " + year + " год.";
+        return author + " написал книгу " + title + " в " + year + " году.";
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        try {
+            Book inObj = (Book) obj;
+            return title.equals(inObj.getTitle()) && inObj.getYear() == year;
+        } catch (ClassCastException e) {
+            System.out.println("Классы не совпадают");
+            return false;
+        }
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return author.hashCode() + title.hashCode() / year;
     }
 }
