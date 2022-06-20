@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Author {
     private final String firstName;
     private final String lastName;
@@ -21,13 +23,10 @@ public class Author {
 
     @Override
     public boolean equals(Object obj) {
-        try {
-            Author inObj = (Author) obj;
-            return firstName.equals(inObj.getFirstName()) && lastName.equals(inObj.getLastName());
-        } catch (ClassCastException e) {
-            System.out.println("Классы не совпадают");
-            return false;
-        }
+        if (this == obj) return true;
+        if (!(obj instanceof Author)) return false;
+        Author author = (Author) obj;
+        return Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName);
     }
 
     @Override

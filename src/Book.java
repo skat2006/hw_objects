@@ -32,13 +32,10 @@ public class Book {
 
     @Override
     public boolean equals(Object obj) {
-        try {
-            Book inObj = (Book) obj;
-            return title.equals(inObj.getTitle()) && inObj.getYear() == year;
-        } catch (ClassCastException e) {
-            System.out.println("Классы не совпадают");
-            return false;
-        }
+        if (this == obj) return true;
+        if (!(obj instanceof Book)) return false;
+        Book book = (Book) obj;
+        return year == book.year && title.equals(book.title) && author.equals(book.author);
     }
 
     @Override
